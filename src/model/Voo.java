@@ -31,16 +31,37 @@ public class Voo {
     private String data_saida;
     private String data_chegada;
     
-//    @Transient
-//    private int id_aeronave,id_aeroporto_origem, id_aeroporto_chegada;
+    
     @ManyToOne
     @JoinColumn(name="id_aeronave",foreignKey = @ForeignKey(name="FK_aeronave"))
     private Aeronave aeronave;
     
     @ManyToOne
-    @JoinColumn(name="id_aeronave",foreignKey = @ForeignKey(name="FK_aeronave"))
+    @JoinColumn(name="id_aeroporto_origem",foreignKey = @ForeignKey(name="FK_aeroporto_origem"))
     private Aeroporto aeroporto_origem;
+    
+    @ManyToOne
+    @JoinColumn(name="id_aeroporto_chegada",foreignKey = @ForeignKey(name="FK_aeroporto_chegada"))
+    private Aeroporto aeroporto_chegada;
+    
+    
 
+    public Aeroporto getAeroporto_origem() {
+        return aeroporto_origem;
+    }
+
+    public void setAeroporto_origem(Aeroporto aeroporto_origem) {
+        this.aeroporto_origem = aeroporto_origem;
+    }
+
+    public Aeroporto getAeroporto_chegada() {
+        return aeroporto_chegada;
+    }
+
+    public void setAeroporto_chegada(Aeroporto aeroporto_chegada) {
+        this.aeroporto_chegada = aeroporto_chegada;
+    }
+//
     public Aeronave getAeronave() {
         return aeronave;
     }
@@ -74,29 +95,5 @@ public class Voo {
     public void setData_chegada(String data_chegada) {
         this.data_chegada = data_chegada;
     }
-    
-//    public int getId_aeronave() {
-//        return id_aeronave;
-//    }
-//
-//    public void setId_aeronave(int id_aeronave) {
-//        this.id_aeronave = id_aeronave;
-//    }
-//
-//    public int getId_aeroporto_origem() {
-//        return id_aeroporto_origem;
-//    }
-//
-//    public void setId_aeroporto_origem(int id_aeroporto_origem) {
-//        this.id_aeroporto_origem = id_aeroporto_origem;
-//    }
-//
-//    public int getId_aeroporto_chegada() {
-//        return id_aeroporto_chegada;
-//    }
-//
-//    public void setId_aeroporto_chegada(int id_aeroporto_chegada) {
-//        this.id_aeroporto_chegada = id_aeroporto_chegada;
-//    }
     
 }

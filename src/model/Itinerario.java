@@ -7,9 +7,12 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 /**
@@ -25,10 +28,29 @@ public class Itinerario {
     @Column(name = "ITINERARIO_ID")
     private int numero_reserva;
     
-    @Transient
-    private int idPassageiro;
-    @Transient
-    private int numero_voo;
+    @ManyToOne
+    @JoinColumn(name="id_passageiro", foreignKey = @ForeignKey(name = "FK_passageiro"))
+    private Passageiro passageiro;
+    
+    @ManyToOne
+    @JoinColumn(name="numero_voo", foreignKey = @ForeignKey(name = "FK_voo"))
+    private Voo voo;
+
+    public Passageiro getPassageiro() {
+        return passageiro;
+    }
+
+    public void setPassageiro(Passageiro passageiro) {
+        this.passageiro = passageiro;
+    }
+
+    public Voo getVoo() {
+        return voo;
+    }
+
+    public void setVoo(Voo voo) {
+        this.voo = voo;
+    }
     
     private String numero_assento;
     private String qtd_bagagem;
@@ -64,23 +86,6 @@ public class Itinerario {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-    
-    public int getIdPassageiro() {
-        return idPassageiro;
-    }
-
-    public void setIdPassageiro(int idPassageiro) {
-        this.idPassageiro = idPassageiro;
-    }
-
-    public int getNumero_voo() {
-        return numero_voo;
-    }
-
-    public void setNumero_voo(int numero_voo) {
-        this.numero_voo = numero_voo;
-    }
-    
+    }    
     
 }
