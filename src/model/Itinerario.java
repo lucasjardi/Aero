@@ -26,7 +26,9 @@ public class Itinerario {
     private int numero_reserva;
     
     @Transient
-    private int idPassageiro, numero_voo;
+    private int idPassageiro;
+    @Transient
+    private int numero_voo;
     
     private String numero_assento;
     private String qtd_bagagem;

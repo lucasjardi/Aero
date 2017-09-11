@@ -22,5 +22,7 @@ public class main {
         PersistenciaHIbernate persist = new PersistenciaHIbernate();
         
         persist.insert(a);
+        
+//        System.out.println("\n\nAERONAVE : " +persist.find(1).getNome_empresa());
     }
 }

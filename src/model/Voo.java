@@ -7,9 +7,12 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 /**
@@ -28,8 +31,25 @@ public class Voo {
     private String data_saida;
     private String data_chegada;
     
-    @Transient
-    private int id_aeronave,id_aeroporto_origem, id_aeroporto_chegada;
+//    @Transient
+//    private int id_aeronave,id_aeroporto_origem, id_aeroporto_chegada;
+    @ManyToOne
+    @JoinColumn(name="id_aeronave",foreignKey = @ForeignKey(name="FK_aeronave"))
+    private Aeronave aeronave;
+    
+    @ManyToOne
+    @JoinColumn(name="id_aeronave",foreignKey = @ForeignKey(name="FK_aeronave"))
+    private Aeroporto aeroporto_origem;
+
+    public Aeronave getAeronave() {
+        return aeronave;
+    }
+
+    public void setAeronave(Aeronave aeronave) {
+        this.aeronave = aeronave;
+    }
+    
+    
 
     public int getNumero_voo() {
         return numero_voo;
@@ -55,28 +75,28 @@ public class Voo {
         this.data_chegada = data_chegada;
     }
     
-    public int getId_aeronave() {
-        return id_aeronave;
-    }
-
-    public void setId_aeronave(int id_aeronave) {
-        this.id_aeronave = id_aeronave;
-    }
-
-    public int getId_aeroporto_origem() {
-        return id_aeroporto_origem;
-    }
-
-    public void setId_aeroporto_origem(int id_aeroporto_origem) {
-        this.id_aeroporto_origem = id_aeroporto_origem;
-    }
-
-    public int getId_aeroporto_chegada() {
-        return id_aeroporto_chegada;
-    }
-
-    public void setId_aeroporto_chegada(int id_aeroporto_chegada) {
-        this.id_aeroporto_chegada = id_aeroporto_chegada;
-    }
+//    public int getId_aeronave() {
+//        return id_aeronave;
+//    }
+//
+//    public void setId_aeronave(int id_aeronave) {
+//        this.id_aeronave = id_aeronave;
+//    }
+//
+//    public int getId_aeroporto_origem() {
+//        return id_aeroporto_origem;
+//    }
+//
+//    public void setId_aeroporto_origem(int id_aeroporto_origem) {
+//        this.id_aeroporto_origem = id_aeroporto_origem;
+//    }
+//
+//    public int getId_aeroporto_chegada() {
+//        return id_aeroporto_chegada;
+//    }
+//
+//    public void setId_aeroporto_chegada(int id_aeroporto_chegada) {
+//        this.id_aeroporto_chegada = id_aeroporto_chegada;
+//    }
     
 }

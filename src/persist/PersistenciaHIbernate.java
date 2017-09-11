@@ -31,4 +31,25 @@ public class PersistenciaHIbernate {
             entitymanager.close();
         }
     }
+    
+    public Aeronave find(int id){
+        
+        Aeronave x = null;
+        EntityManager entitymanager = null;
+        
+        try{
+            entitymanager = EntityManagerUtil.getEntityManager();
+            entitymanager.getTransaction().begin();
+            x = entitymanager.find(Aeronave.class, id);
+            entitymanager.getTransaction().commit();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            entitymanager.close();
+        }
+        
+        return x;
+        
+    }
 }
