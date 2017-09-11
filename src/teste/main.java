@@ -6,6 +6,7 @@
 package teste;
 
 import model.Aeronave;
+import persist.PersistTest;
 import persist.PersistenciaHIbernate;
 
 /**
@@ -18,11 +19,9 @@ public class main {
         
         a.setNome_empresa("para");
         a.setTipo_aeronave("Boeing");
+
+        PersistTest p = new PersistTest();
+        p.insert(a);
         
-        PersistenciaHIbernate persist = new PersistenciaHIbernate();
-        
-        persist.insert(a);
-        
-//        System.out.println("\n\nAERONAVE : " +persist.find(1).getNome_empresa());
     }
 }
