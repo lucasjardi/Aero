@@ -17,15 +17,23 @@ public class main {
     public static void main(String[] args) {
         Aeronave a = new Aeronave();
         
-        a.setNome_empresa("para");
+        a.setNome_empresa("gol");
         a.setTipo_aeronave("Boeing");
         
-        AeronaveHibernate ah = new AeronaveHibernate(Aeronave.class);
+        AeronaveHibernate ah = new AeronaveHibernate();
         ah.save(a);
         
 //        ah.delete(a);
-        Aeronave busca = ah.findById(1);
-        System.out.println(busca.getNome_empresa());
+//        Aeronave busca = ah.findById(1);
+//        System.out.println(busca.getNome_empresa());
+
+//        for(Aeronave aux:ah.findByNomeEmpresa("gol"))
+//            System.out.println(aux.getTipo_aeronave());
+       
+//        for(Aeronave aux:ah.listTipoAeronaveLike("Bo"))
+//            System.out.println(aux.getTipo_aeronave());
+
+    
         
     }
 }
