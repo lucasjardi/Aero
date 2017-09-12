@@ -11,7 +11,7 @@ import org.hibernate.HibernateException;
 
 import util.EntityManagerUtil;
 
-public class AbstractRepository<T, ID extends Serializable>{
+public class AbstractRepository<T, ID extends Serializable> implements IPersistMetodos<T,ID>{
 
 	private final EntityManager em;
 	private Class<T> persistentClass;
@@ -21,7 +21,8 @@ public class AbstractRepository<T, ID extends Serializable>{
 		this.persistentClass = pPersistentClass;
 	}
 
-	public void save(T entity) {
+        @Override
+	public < T > void save(T entity) {
 		try {
 			this.em.getTransaction().begin();
 			this.em.persist(entity);
@@ -32,7 +33,8 @@ public class AbstractRepository<T, ID extends Serializable>{
 		}
 	}
 
-	public void update(T entity) {
+        @Override
+	public < T > void update(T entity){
 		try{
 			this.em.getTransaction().begin();
 			this.em.merge(entity);
@@ -42,7 +44,8 @@ public class AbstractRepository<T, ID extends Serializable>{
 		}
 	}
 
-	public void delete(T entity) {
+        @Override
+	public < T > void delete(T entity) {
 		try {
 			this.em.getTransaction().begin();
 			this.em.remove(entity);
@@ -53,17 +56,18 @@ public class AbstractRepository<T, ID extends Serializable>{
 		}
 	}
 
-	public T findById(ID id) {
+        @Override
+	public < T > T findById(ID id) {
 		T fEntity = null;
 		try {
-			fEntity = em.find(persistentClass, id);
+                    fEntity = em.find((Class<T>) persistentClass, id);
 		} catch (NoResultException e) {
 			return null;
 		} 	
 		return fEntity;
 	}
 
-	public List<T> listAllEntity(Class<T> entity) {
+	public < T > List<T> listAllEntity(Class<T> entity) {
 		List<T> objects = null;
 		try {
 			Query query = em.createQuery("from " + entity.getName());
@@ -74,7 +78,8 @@ public class AbstractRepository<T, ID extends Serializable>{
 		return objects;
 	}
 
-	public List<T> listAllEntityOrderBy(Class<T> entity, String fieldName) {
+        @Override
+	public < T > List<T> listAllEntityOrderBy(Class<T> entity, String fieldName) {
 		List<T> objects = null;
 		try {
 			Query query = em.createQuery("from " + entity.getName() + " order by "

@@ -21,18 +21,6 @@ public class AeronaveHibernate extends AbstractRepository<Aeronave, Integer>{
         super(pPersistentClass);
     }
     
-    public Aeronave findByNameEmpresa(String nomeEmpresa){
-        EntityManager entM = null;
-        
-        Aeronave a;
-        try {
-            a = entM.find(Aeronave.class,nomeEmpresa);
-        } catch (NoResultException e) {
-            return null;
-        } 	
-        return a;
-    }
-    
     public void deleteAeronave(Aeronave a){
         EntityManager entM = null;
          

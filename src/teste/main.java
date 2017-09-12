@@ -23,7 +23,9 @@ public class main {
         AeronaveHibernate ah = new AeronaveHibernate(Aeronave.class);
         ah.save(a);
         
-        ah.delete(a);
+//        ah.delete(a);
+        Aeronave busca = ah.findById(1);
+        System.out.println(busca.getNome_empresa());
         
     }
 }
