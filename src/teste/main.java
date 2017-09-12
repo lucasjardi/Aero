@@ -7,6 +7,7 @@ package teste;
 
 import model.Aeronave;
 import persist.AbstractRepository;
+import persist.AeronaveHibernate;
 
 /**
  *
@@ -19,8 +20,10 @@ public class main {
         a.setNome_empresa("para");
         a.setTipo_aeronave("Boeing");
         
-//        AbstractRepository aux = new AbstractRepository(Aeronave);
-//        aux.insert(a);
+        AeronaveHibernate ah = new AeronaveHibernate(Aeronave.class);
+        ah.save(a);
+        
+        ah.delete(a);
         
     }
 }

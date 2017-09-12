@@ -15,7 +15,7 @@ public interface IPersistMetodos {
     public < T > void save(T objeto);
     public < T > T update(int id);
     public < T > void delete(T objeto);
-//    public < T > T findById(ID id);
+    public < T > T findById(int id);
     public < T > List<T> listAllEntity(Class<T> entity);
     public < T > List<T> listAllEntityOrderBy(Class<T> entity, String fieldName);
 }

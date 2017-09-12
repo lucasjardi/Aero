@@ -45,7 +45,7 @@ public class AbstractRepository<T, ID extends Serializable>{
 	public void delete(T entity) {
 		try {
 			this.em.getTransaction().begin();
-			this.em.remove(em.merge(entity));
+			this.em.remove(entity);
 			this.em.getTransaction().commit();
 		} catch (Exception e){
 			e.printStackTrace();
