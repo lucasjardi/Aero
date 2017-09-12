@@ -12,9 +12,10 @@ import java.util.List;
  * @author DTI
  */
 public interface IPersistMetodos {
-    public < T > void insert(T objeto);
-    public < T > T find(int id);
-    public < T > void merge(T objeto);
-    public < T > void remove(T objeto);
-    public List<?> list();
+    public < T > void save(T objeto);
+    public < T > T update(int id);
+    public < T > void delete(T objeto);
+//    public < T > T findById(ID id);
+    public < T > List<T> listAllEntity(Class<T> entity);
+    public < T > List<T> listAllEntityOrderBy(Class<T> entity, String fieldName);
 }

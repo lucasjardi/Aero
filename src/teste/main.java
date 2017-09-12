@@ -6,8 +6,7 @@
 package teste;
 
 import model.Aeronave;
-import persist.PersistTest;
-import persist.PersistenciaHIbernate;
+import persist.AbstractRepository;
 
 /**
  *
@@ -19,9 +18,9 @@ public class main {
         
         a.setNome_empresa("para");
         a.setTipo_aeronave("Boeing");
-
-        PersistTest p = new PersistTest();
-        p.insert(a);
+        
+//        AbstractRepository aux = new AbstractRepository(Aeronave);
+//        aux.insert(a);
         
     }
 }
